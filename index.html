@@ -10,7 +10,8 @@
     <title>Cyber Blog</title>
 </head>
 
-<body>
+<body class="p-3 mb-2 bg-dark text-white">
+    <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#"> Blog Name</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -33,12 +34,54 @@
     </nav>
 
 
-
+    <!-- Page Title and Subtext Component -->
     <div id="app" class="container">
         <h1>{{ pageTitle }}</h1>
         <p>{{ content }}</p>
+
+    </div>
+    <!-- Profile images component -->
+    <!-- <div id="profileImages">
+        <img v-for="image in profileImages" :src="image" alt="">
+        {{ profileImages.src }} 
+    </div> -->
+
+    <div id="mouse">
+        <section @mouseenter="hover = true " @mouseleave="hover = false " class="div" :class="{ 'div-hover': hover }">
+            {{message}}
+        </section>
     </div>
 
+    <css-doodle>
+        :doodle {
+        @grid: 1x3 / 100vmax;
+        position: absolute;
+        top: 0; left: 0;
+        z-index: 0;
+        }
+
+        @size: 100% 150%;
+        position: absolute;
+
+        background: @m(100, (
+        linear-gradient(transparent, @p(
+        #1FE338@repeat(2, @p([0-9a-f])),
+        #1FE338@repeat(2, @p([0-9a-f]))
+        ))
+        @r(0%, 100%) @r(0%, 100%) /
+        @r(1px) @r(23vmin)
+        no-repeat
+        ));
+
+        will-change: transform;
+        animation: f 50s linear calc(-50s / @size() * @i()) infinite;
+        @keyframes f {
+        from { transform: translateY(-100%) }
+        to { transform: translateY(100%) }
+        }
+    </css-doodle>
+
+    <script src="https://unpkg.com/css-doodle@0.6.1/css-doodle.min.js"></script>
 
     <script src="app.js"></script>
 
